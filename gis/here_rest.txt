@@ -1,0 +1,3 @@
+# here.com freemium rest app:
+app_id=BdaYvSmKwbND1IzVEkIK
+api_key=iVvvNyXcZa1Vpp1PgJ5yLNBssp_akKBksohpzdV07Js

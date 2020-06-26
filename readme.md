@@ -1,3 +1,14 @@
+https://rapidapi.com/blog/google-finance-api-alternatives/
+
+https://rapidapi.com/blog/best-stock-api
+
+https://www.alphavantage.co/support/#api-key
+Welcome to Alpha Vantage! Here is your API key: 9U7FFJUJDHW2LMR4
+
+
+https://finnhub.io/dashboard api_key: brqjmkfrh5rc4v2pn2mg
+
+
 800/day free realtime:https://twelvedata.com/apikey#timeframes-faq
 12data_apikey = 743dc3c7e6f6479a8abb777bafaf1ca3
 

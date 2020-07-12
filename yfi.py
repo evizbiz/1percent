@@ -46,7 +46,7 @@ def yf_options(tics):
   return tdict
 
 class Week:
-  def __init__(self, start='2020-07-06', end='2020-07-10'):
+  def __init__(self, start='2020-07-06', end='2020-07-11'):
     self.start = start ; self.end = end
 
 if __name__ == '__main__':
@@ -54,6 +54,6 @@ if __name__ == '__main__':
   tics = "c wfc"
   tics = tics.split(' ')
   week = Week()
-  #week = new week('2020-07-06', '2020-07-10')
+  #week = week('2020-07-13', '2020-07-18')
   yf_close(tics, week)
 

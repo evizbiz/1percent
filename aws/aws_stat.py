@@ -1,4 +1,10 @@
 #!/usr/bin/env python
+import json
+
+def prices(svc='AmazonEC2'):
+  import awspricing
+  awsproce = awspricing.offer(svc)
+  return awsprice
 
 def rt53stat():
   import boto.route53
@@ -26,15 +32,23 @@ def aws_lambda(region='us-east-1', marker=''):
   return resp
 
 if __name__ == '__main__':
+  print("lambdas ....")
   resp = aws_lambda()
-  print(resp)
+  print(resp, '\n')
 
+  print("S3 buckets ....")
   buckets = s3stat()
-  print(buckets)
+  print(buckets, '\n')
 
+  print("EC2 VMs ....")
   ec2 = ec2stat()
-  print(ec2)
+  print(ec2, '\n')
 
+  print("Route53 domains ....")
   rt53 = rt53stat()
-  print(rt53)
+  print(rt53,'\n')
+
+  #prcs = prices()
+  #help(prcs)
+
 

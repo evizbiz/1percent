@@ -9,7 +9,16 @@ import yfinance as yf
 # if we need to sanitize poorly encoded text for tty output:
 #sys.stdout = codecs.getwriter('utf8')(sys.stdout)
 #sys.stderr = codecs.getwriter('utf8')(sys.stderr)
+from datetime import date
 
+def satsunday(input=datetime.date.today()):
+    d = input.toordinal()
+    last = d - 6
+    sunday = last - (last % 7)
+    sund = datetime.date.fromordinal(sunday)
+    saturday = sunday + 6
+    satd = datetime.date.fromordinal(saturday)
+    return [str(sund), str(satd)]
 
 def yf_close(tics, week):
   print(tics)
@@ -46,14 +55,16 @@ def yf_options(tics):
   return tdict
 
 class Week:
-  def __init__(self, start='2020-07-06', end='2020-07-11'):
-    self.start = start ; self.end = end
+  def __init__(self, start_end=['2020-07-06', '2020-07-11']):
+    self.start = start_end[0] ; self.end = start_end[1]
 
 if __name__ == '__main__':
   #tics = "atax diax dsl fof gut hqh hql jta jtd mfd ohi bdcs sdiv slv tpz wfc yyy"
   tics = "c wfc"
   tics = tics.split(' ')
+  ssday = satsunday()
+  print(ssday)
   week = Week()
-  #week = week('2020-07-13', '2020-07-18')
+  #week = week(['2020-07-13', '2020-07-18'])
   yf_close(tics, week)
 

@@ -11,6 +11,10 @@ import yfinance as yf
 #sys.stderr = codecs.getwriter('utf8')(sys.stderr)
 from datetime import date
 
+class Week:
+  def __init__(self, start_end=['2020-07-06', '2020-07-11']):
+    self.start = start_end[0] ; self.end = start_end[1]
+
 def satsunday(input=datetime.date.today()):
     d = input.toordinal()
     last = d - 6
@@ -31,9 +35,10 @@ def yf_weekly(tics, week):
 
 def yf_options(tics):
   print(tics)
-  tdict = {}
+  optns = {}
   for t in tics:
-    q = yfinance.Ticker(t)
+    t = t.upper()
+    q = yf.Ticker(t)
     try:
       info = q.info.items()
       for item in info: print(t,item)
@@ -44,31 +49,22 @@ def yf_options(tics):
       exp = opts_exp[0]
       opt = q.option_chain(exp)
       print(exp, opt.calls, opt.puts)
-      tdict[t] = { exp, opt }
-      #for exp in opts_exp:
-        #print(t, exp)
-        #opt = q.option_chain(exp)
-        #print(opt.calls, opt.puts)
+      optns[t] = { exp, opt.calls, opt.puts }
     except: 
       print("failed to get options quote for:", t)
 
-  return tdict
-
-class Week:
-  def __init__(self, start_end=['2020-07-06', '2020-07-11']):
-    self.start = start_end[0] ; self.end = start_end[1]
+  return optns
 
 if __name__ == '__main__':
   #tics = "atax diax dsl fof gut hqh hql jta jtd mfd ohi bdcs sdiv slv tpz wfc yyy"
   tics = "c wfc"
-  tics = tics.split(' ')
+  tics = tics.upper().split(' ')
   ssday = satsunday()
-  print(ssday)
-  #week = Week()
   week = Week(ssday)
-  data = yf_weekly(tics, week)
-
+  #prices = yf_weekly(tics, week)
+  #for t in tics:
+    #print(t, prices[t])
+  optns = yf_options(tics)
   for t in tics:
-    t = t.upper()
-    print(t, data[t])
+    print(t, optns)
 

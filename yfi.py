@@ -49,7 +49,7 @@ def yf_options(tics):
       exp = opts_exp[0]
       opt = q.option_chain(exp)
       print(exp, opt.calls, opt.puts)
-      optns[t] = { exp, opt.calls, opt.puts }
+      optns[t] = { exp, str(info), str(opt.calls), str(opt.puts) }
     except: 
       print("failed to get options quote for:", t)
 

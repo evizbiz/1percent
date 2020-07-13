@@ -20,7 +20,7 @@ def satsunday(input=datetime.date.today()):
     satd = datetime.date.fromordinal(saturday)
     return [str(sund), str(satd)]
 
-def yf_close(tics, week):
+def yf_weekly(tics, week):
   print(tics)
   data = yf.download(tics, week.start, week.end, group_by="ticker")
   for t in tics:
@@ -64,7 +64,11 @@ if __name__ == '__main__':
   tics = tics.split(' ')
   ssday = satsunday()
   print(ssday)
-  week = Week()
-  #week = week(['2020-07-13', '2020-07-18'])
-  yf_close(tics, week)
+  #week = Week()
+  week = Week(ssday)
+  data = yf_weekly(tics, week)
+
+  for t in tics:
+    t = t.upper()
+    print(t, data[t])
 
